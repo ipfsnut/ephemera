@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emotion Detection App</title>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#"><img src="assets/images/logo.png" alt="Logo"></a>
+      <h1>Emotion Detection App</h1>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Upload Files</h2>
+      <input type="file" id="fileInput" multiple>
+      <ul id="fileList"></ul>
+    </section>
+
+    <section>
+      <h2>Emotion Detection Results</h2>
+      <div id="emotionResults"></div>
+    </section>
+
+    <section>
+      <button id="sendFilesButton">Send Files to API</button>
+      <button id="exportResultsButton">Export Results</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; Emotion Detection App</p>
+  </footer>
+
+  <script src="scripts/script.js"></script>
+</body>
+</html>
