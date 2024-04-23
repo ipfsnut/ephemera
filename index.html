@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ephemeraUI</title>
+  <style>
+/* General Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0f0f0f;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Styles */
+header {
+  background-color: #1a1a1a;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+nav h1 {
+  font-size: 24px;
+  margin: 0;
+  color: #00d8ff;
+  text-shadow: 0 0 10px rgba(0, 216, 255, 0.5);
+}
+
+nav #readmeButton {
+  background-color: #00d8ff;
+  color: #0f0f0f;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+nav #readmeButton:hover {
+  background-color: #00c2e6;
+}
+
+/* Main Content Styles */
+main {
+  padding: 20px;
+}
+
+.columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  flex: 1;
+  margin: 0 10px;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 20px;
+  color: #00d8ff;
+  text-shadow: 0 0 10px rgba(0, 216, 255, 0.5);
+  margin-top: 0;
+}
+
+/* File Input Styles */
+#fileInput {
+  display: block;
+  margin-bottom: 10px;
+  background-color: #333333;
+  color: #e0e0e0;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#fileList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.file-box {
+  background-color: #333333;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.thumbnail {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 5px;
+}
+
+.cid-box {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #00d8ff;
+  text-shadow: 0 0 5px rgba(0, 216, 255, 0.5);
+}
+
+/* Button Styles */
+button {
+  background-color: #00d8ff;
+  color: #0f0f0f;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #00c2e6;
+}
+
+button:disabled {
+  background-color: #333333;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+/* Input Field Styles */
+input[type="text"] {
+  background-color: #333333;
+  color: #e0e0e0;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer Styles */
+footer {
+  background-color: #1a1a1a;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+footer p {
+  margin: 0;
+  font-size: 14px;
+  color: #666666;
+}
+
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #1a1a1a;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #00d8ff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <!-- Logo image -->
+      <a href="/"><img src="./assets/images/logo.png" alt="Logo"></a>
+      <h1>ephemeraUI: precision file management</h1>
+      <!-- Button to open the About -->
+      <button id="openModalBtn">About This dApp</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="columns">
+      <div class="column">
+        <section>
+          <h2>Upload Files</h2>
+          <!-- File input for selecting any file type -->
+          <input type="file" id="fileInput" multiple>
+          <!-- Container for displaying uploaded file thumbnails and names -->
+          <div id="fileList"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; ephemeraUI</p>
+  </footer>
+
+  <!-- Text Modal -->
+  <div id="textModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="modalText"></p>
+    </div>
+  </div>
+
+  <script>
+    // Get references to DOM elements
+    const fileInput = document.getElementById('fileInput');
+    const fileList = document.getElementById('fileList');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const textModal = document.getElementById('textModal');
+    const modalText = document.getElementById('modalText');
+    const closeModal = document.getElementsByClassName('close')[0];
+
+    // Array to store uploaded files
+    let uploadedFiles = [];
+
+    // Event listener for file input
+    fileInput.addEventListener('change', handleFileUpload);
+
+    // Event listener for opening the text modal
+    openModalBtn.addEventListener('click', () => {
+      modalText.textContent = `# ephemeraUI
+
+ephemeraUI is a simple web application that allows users to upload files and display them in a user-friendly interface.
+
+## Features
+
+- Upload multiple files
+- Display thumbnails of uploaded files
+- Show file names
+
+## Usage
+
+1. Open the \`index.html\` file in a web browser.
+2. Click the "Upload Files" button and select one or more files.
+3. The uploaded files will be displayed with their thumbnails and file names.`;
+      textModal.style.display = 'block';
+    });
+
+    // Event listener for closing the text modal
+    closeModal.addEventListener('click', () => {
+      textModal.style.display = 'none';
+    });
+
+    // When the user clicks outside the modal, close it
+    window.addEventListener('click', (event) => {
+      if (event.target === textModal) {
+        textModal.style.display = 'none';
+      }
+    });
+
+    // Function to handle file upload
+    function handleFileUpload(event) {
+      const files = event.target.files;
+
+      // Loop through uploaded files
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+
+        // Check if the file is already in the uploadedFiles array
+        if (!uploadedFiles.some(item => item.name === file.name)) {
+          uploadedFiles.push({ name: file.name, file });
+
+          // Create box object for the file
+          const fileBox = document.createElement('div');
+          fileBox.classList.add('file-box');
+
+          // Create thumbnail (or placeholder)
+          const thumbnail = document.createElement('img');
+          thumbnail.src = URL.createObjectURL(file);
+          thumbnail.alt = file.name;
+          thumbnail.classList.add('thumbnail');
+          fileBox.appendChild(thumbnail);
+
+          // Create heading
+          const heading = document.createElement('h3');
+          heading.textContent = file.name;
+          fileBox.appendChild(heading);
+
+          // Append the file box to the fileList
+          fileList.appendChild(fileBox);
+        }
+      }
+    }
+  </script>
+</body>
+</html>

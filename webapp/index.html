@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emotion Detection App</title>
+  <link rel="stylesheet" href="styles/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
+  <script type="module" src="scripts/main.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#"><img src="assets/images/logo.png" alt="Logo"></a>
+      <h1>ephemeraUI</h1>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <section>
+            <h2>Upload Files</h2>
+            <input type="file" id="fileInput" multiple>
+            <ul id="fileList"></ul>
+          </section>
+        </div>
+
+        <div class="col">
+          <section>
+            <h2>Manual Testing</h2>
+            <div class="form-group">
+              <label for="cidInput">Enter CID:</label>
+              <input type="text" id="cidInput" class="form-control">
+            </div>
+            <button id="testCidButton" class="btn">Test CID</button>
+          </section>
+        </div>
+
+        <div class="col">
+          <section>
+            <h2>Emotion Detection Results</h2>
+            <div id="emotionResults"></div>
+          </section>
+        </div>
+
+        <div class="col">
+          <section>
+            <h2>Debug Panel</h2>
+            <div id="debugPanel" class="debug-panel"></div>
+          </section>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <button id="uploadButton" class="btn btn-primary">Upload Files</button>
+          <button id="sendFilesButton" class="btn btn-primary">
+            <span id="sendFilesIcon" class="spinner"></span>
+            Send Files to API
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; ephemeraUI</p>
+  </footer>
+</body>
+</html>
