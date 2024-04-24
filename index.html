@@ -267,19 +267,10 @@ footer p {
     openModalBtn.addEventListener('click', () => {
       modalText.textContent = `# ephemeraUI
 
-ephemeraUI is a simple web application that allows users to upload files and display them in a user-friendly interface.
+A web application for uploading images and performing operations to analyze them.
 
-## Features
-
-- Upload multiple files
-- Display thumbnails of uploaded files
-- Show file names
-
-## Usage
-
-1. Open the \`index.html\` file in a web browser.
-2. Click the "Upload Files" button and select one or more files.
-3. The uploaded files will be displayed with their thumbnails and file names.`;
+`;
+     
       textModal.style.display = 'block';
     });
 
@@ -329,5 +320,17 @@ ephemeraUI is a simple web application that allows users to upload files and dis
       }
     }
   </script>
+
+  <div class="file-box">
+    <h2> Usage </h2> 
+
+    1. <br></br>
+    Select one or more image files to upload using the file input. <br></br>
+    2. <br></br>
+    The application will automatically upload the files and display their thumbnails and names. <br></br>
+    3. <br></br>
+    (Planned) Pin the uploaded images to IPFS. <br></br>
+    4. <br></br>
+    (Planned) View emotion detect ion results for the uploaded images.</div>
 </body>
 </html>
